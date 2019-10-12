@@ -1,0 +1,24 @@
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="<%= carousel_item(0, slide) %>"></li>
+    <li data-target="#myCarousel" data-slide-to="1" class="<%= carousel_item(1, slide) %>"></li>
+    <li data-target="#myCarousel" data-slide-to="2" class="<%= carousel_item(2, slide) %>"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="item bg bg1 <%= carousel_item(0, slide) %>">
+      <%= render 'layouts/shared/carousel/item_carousel_01' %>
+    </div>
+
+    <div class="item bg bg2 <%= carousel_item(1, slide) %>">
+      <%= render 'layouts/shared/carousel/item_carousel_02' %>
+    </div>
+
+    <div class="item bg bg3 <%= carousel_item(2, slide) %>">
+      <%= render 'layouts/shared/carousel/item_carousel_03' %>
+    </div>
+  </div>
+
+  <%= render partial: 'layouts/shared/links', locals: { carouselClass: 'container header-nav' } %>
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+</div>

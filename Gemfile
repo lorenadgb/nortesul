@@ -35,6 +35,13 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails', '~> 4.3.1'
+gem 'mail_form'
+gem 'simple_form'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+gem 'prawn', '~> 2.1'
+gem 'combine_pdf'
+gem 'jquery-inputmask-rails'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false

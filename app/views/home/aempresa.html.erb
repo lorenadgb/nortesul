@@ -1,0 +1,109 @@
+<header class="a-empresa">
+  <div class="container">
+
+    <%= render partial:'layouts/shared/links', locals: { carouselClass: '' } %>
+
+    <br>
+
+    <br><br><br>
+
+  </div>
+</header>
+
+<section class="services">
+  <div class="container">
+    <div class="box first">
+      <div class="row">
+
+        <div id="a-empresa" class="row">
+          <div class="col-md-12">
+            <div style="float: left;"
+              class="rdg-expertise-description rdg-strategy-bg rdg-animated-delay-0-large text-right"></div>
+            <div class="nav-left-text">
+              <p style="color: #2d5c82">A NORTE SUL INVESTE NO</p>
+              <p style="color: #2d5c82; margin:-30px">PRESENTE E PRESERVA O FUTURO</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+
+            <br>
+            <br>
+
+            <span class="content-text paragraph-inside">
+            A NORTE SUL acredita que é possível estar em sintonia com o Meio Ambiente e temos como responsabilidade
+            promover políticas ecológicas de forma inteligente, limpa e sustentável.
+            </span>
+
+            <br>
+
+            <span class="content-text paragraph-inside">
+            Entre as principais vantagens de se utilizar os sistemas fotovoltaicos para gerar
+            energia elétrica, estão:
+            </span>
+
+            <br>
+            <br>
+
+            <%= image_tag 'grupo_sistemas.png', class: 'advantages-image' %>
+
+            <br>
+            <br>
+            <br>
+          </div>
+
+        </div>
+
+        <h2-reduza>
+          <span class="reduza-wrapper">Reduza em até <span class="yellowText">&nbsp;95%&nbsp;</span>a conta de energia</span>
+        </h2-reduza>
+
+        <br>
+        <br>
+
+        <div class="row">
+          <div class="col-md-12">
+
+            <br>
+            <br>
+            <br>
+
+            <div class="sub-header">
+              <div class="nav-left-text">
+                <p class="secondary-header"> QUEM SOMOS?</p>
+              </div>
+            </div>
+
+            <span class="content-text" style="font-size: 18px; margin-top: -30px">
+              Por acreditarmos que a energia é essencial para o desenvolvimento humano, buscamos,
+              através de nossa paixão pela inovação, torná-la mais segura, eficiente e sustentável.
+              A qualidade é o nosso compromisso e a nossa prioridade a serviço de nossos clientes.
+              Orgulhosos de nossos valores, contribuímos, juntos, para um futuro melhor.
+            </span>
+
+            <br>
+
+            <span class="content-text" style="font-size: 18px">
+            Orgulhosos de nossos valores, contribuímos, juntos, para um futuro melhor.
+            </span>
+
+            <br><br>
+
+            <div class="col-md-6">
+              <%= link_to 'CALCULADORA SOLAR', new_calculadora_path, class: 'btn btn-primary btn-block pull-right', style: 'margin-top: 30px' %>
+            </div>
+
+            <div class="col-md-6">
+              <%= link_to 'SOLICITE ORÇAMENTO', orcamento_path, class: 'btn btn-primary-outline btn-block pull-left', style: 'margin-top: 30px' %>
+            </div>
+
+            <br><br>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

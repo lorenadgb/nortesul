@@ -1,0 +1,13 @@
+<div class="menu-shared <%= carouselClass %>">
+  <div class="col-md-4">
+    <%= link_to (image_tag 'logo-title.png', style: 'width:250px;', class: 'pull-left'), root_path %>
+  </div>
+
+  <div class="col-md-8" style="line-height: 78px;">
+    <%= link_to 'CONTATO', new_contact_path, class: "pull-right #{current_class?(new_contact_path)}"%>
+    <%= link_to 'ORÇAMENTO', orcamento_path, class: "pull-right #{current_class?('orcamento')}" %>
+    <%= link_to 'CALCULADORA SOLAR', new_calculadora_path(anchor: 'calculadora'), class: "pull-right #{current_class?('calculadora')}" %>
+    <%= link_to 'COMO FUNCIONA', como_funciona_path, class: "pull-right #{current_class?('como-funciona')}" %>
+    <%= link_to 'A EMPRESA', a_empresa_path, class: "pull-right #{current_class?('a-empresa')}" %>
+  </div>
+</div>

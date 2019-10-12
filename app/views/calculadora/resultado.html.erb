@@ -1,0 +1,105 @@
+<%= render 'layouts/shared/carousel', slide: 2 %>
+
+<%= hidden_field_tag :pdf_name, @pdf_name %>
+
+<section class="services">
+  <div class="container">
+    <div class="box carousel">
+
+      <div class="row">
+        <div class="col-md-12">
+
+          <%= link_to 'Download', download_pdf_path(pdf_name: @pdf_name), id: 'download_pdf', class: 'download_pdf' %>
+
+          <div id="init"></div>
+
+          <div class="row">
+            <div class="nav-main-text" style="text-align: center;font-size: 60px;font-weight: 600;">
+              <div id="calculadora">CALCULADORA SOLAR</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <figure class="card card-product">
+            <figcaption class="info-wrap">
+              <h4 class="title card-title"><%= image_tag '/icons/resultado_investimento.png', style: 'height: 50px; border: 0; padding: 0' %>INVESTIMENTO</h4>
+            </figcaption>
+            <div class="bottom-wrap">
+              <p>De <%= number_to_currency(@calculadora.investimento_minimo) %> a <%= number_to_currency(@calculadora.investimento_maximo) %></p>
+              <hr style="height:2px;border:none;color:gray;background-color:gray;padding-left: 50px;width: 50px;">
+              <p>Economia mensal:</p>
+              <p><%= number_to_currency(@calculadora.media) %></p>
+              <p>Economia anual:</p>
+              <p><%= number_to_currency(@calculadora.economia_anual) %></p>
+              <p>Economia total em 25 anos:</p>
+              <p><%= number_to_currency(@calculadora.economia_25_anos) %></p>
+            </div>
+          </figure>
+        </div>
+
+        <div class="col-md-4">
+          <figure class="card card-product">
+            <figcaption class="info-wrap">
+              <h4 class="title card-title"><%= image_tag '/icons/resultado_ambiente.png', style: 'height: 50px; border: 0; padding: 0' %>AMBIENTE</h4>
+            </figcaption>
+            <div class="bottom-wrap">
+              <p>Equivalente a 10.000 KM de </p>
+              <p>carro elétrico</p>
+              <hr style="height:2px;border:none;color:gray;background-color:gray;padding-left: 50px;width: 50px;">
+              <p>Redução de CO2 na atmosfera</p>
+              <p>Equivalente a centenas  de árvores plantadas</p>
+              <p>Equivalente a milhares  de KM rodados de um  carro</p>
+            </div>
+          </figure>
+        </div>
+
+        <div class="col-md-4">
+          <figure class="card card-product">
+            <figcaption class="info-wrap">
+              <h4 class="title card-title"><%= image_tag '/icons/resultado_sistema.png', style: 'height: 50px; border: 0; padding: 0' %>SISTEMA INDICADO</h4>
+            </figcaption>
+            <div class="bottom-wrap">
+              <p><%= number_with_delimiter(@calculadora.kwp.round(2)) %> kWp</p>
+              <hr style="height:2px;border:none;color:gray;background-color:gray;padding-left: 50px;width: 50px;">
+              <p>Tamanho da Potência:</p>
+              <p><%= number_with_delimiter(@calculadora.kwp.round(2)) %> kWp</p>
+              <p>Número de Módulos:</p>
+              <p><%= @calculadora.qtd_paineis %> módulos</p>
+              <p>Produção Estimada:</p>
+              <p><%= @calculadora.geracao_media %> kw/h</p>
+            </div>
+          </figure>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <%= link_to 'REINCIAR CALCULADORA', new_calculadora_path(anchor: 'calculadora'), class: 'btn btn-primary btn-block pull-right' %>
+      </div>
+
+      <div class="col-md-6">
+        <%= link_to 'SOLICITE ORÇAMENTO', orcamento_path(
+                                                        media:   params[:calculadora][:media],
+                                                        estado:  params[:calculadora][:estado],
+                                                        cidade:  params[:calculadora][:cidade],
+                                                        local:   params[:calculadora][:local],
+                                                        ajuste:  params[:calculadora][:ajuste],
+                                                        ), class: 'btn btn-primary-outline btn-block pull-left' %>
+      </div>
+
+      <br><br><br>
+
+    </div>
+  </div>
+</section>
+
+<script>
+    $(document).ready(function(){
+        init = function () {
+            //$('#download_pdf')[0].click();
+            //$(window).scrollTop($('#download_pdf').offset().top);
+        }();
+    });
+</script>

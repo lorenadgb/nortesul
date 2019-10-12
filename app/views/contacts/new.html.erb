@@ -1,0 +1,95 @@
+<header class="contato">
+  <div class="container">
+
+    <%= render partial:'layouts/shared/links', locals: { carouselClass: '' } %>
+
+    <br>
+
+    <br><br><br>
+
+  </div>
+</header>
+
+<section class="services">
+  <div class="container">
+    <div class="box contato">
+
+      <div class="row">
+        <div class="col-md-12">
+
+          <%= render 'layouts/shared/flash_messages' %>
+
+          <div class="nav-left-text correct-paragraph">
+            <div class="rdg-expertise-description rdg-strategy-bg rdg-animated-delay-0-contact text-right" style="float: left;"></div>
+
+            <p>CONTATO</p>
+            <p>FALE COM A NORTE SUL</p>
+          </div>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="row">
+        <%= simple_form_for @contact do |f| %>
+          <div class="form-group">
+            <div class="col-md-12">
+              <%= f.input :nome, placeholder: 'NOME', required: true, label: false, input_html: { class: 'form-control'} %>
+            </diV>
+
+            <div class="col-md-12">
+              <%= f.input :email, placeholder: 'E-MAIL', required: true, label: false, input_html: { class: 'form-control'} %>
+            </diV>
+
+            <div class="col-md-12">
+              <%= f.input :telefone, placeholder: 'TELEFONE', required: true, label: false, input_html: { class: 'form-control'} %>
+            </div>
+
+            <div class="col-md-6">
+              <%= f.input :estado, prompt: 'ESTADO', collection: State.all, required: true, label: false, input_html: { class: 'form-control'} %>
+            </div>
+
+            <div class="col-md-6">
+              <%= f.input :cidade, prompt: 'CIDADE', collection: City.all, required: true, label: false, input_html: { class: 'form-control'} %>
+            </div>
+
+            <div class="col-md-12">
+              <%= f.input :mensagem, as: :text, placeholder: 'MENSAGEM', required: true, label: false, input_html: { class: 'form-control', :cols => 5, :rows => 10 } %>
+            </div>
+
+            <center> <%= f.button :submit, 'ENVIAR', class: 'btn btn-primary', style: 'width: 250px' %> </center>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+    $("#contact_estado").change(function() {
+        getCitiesByState("id="+$("#contact_estado").val());
+    });
+
+    $("#contact_cidade").change(function() {
+        getStateByCity("id="+$("#contact_cidade").val());
+    });
+
+    $('#contact_telefone').phoneBrazil();
+
+    function getCitiesByState(id) {
+        $.getJSON("/cities_by_state", id, function (j) {
+            var options = '<option value="">CIDADE</option>';
+            $.each(j.cty, function (i, item) {
+                options += '<option value="' + item.id + '">' + item.n + '</option>';
+            });
+            $("#contact_cidade").html(options);
+        });
+    }
+
+    function getStateByCity(id) {
+        $.getJSON("/state_by_city", id, function (j) {
+            $("#contact_estado").val(j['state']['id']);
+        });
+    }
+</script>

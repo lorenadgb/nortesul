@@ -1,0 +1,53 @@
+<section class="footers pt-5 pb-3 section-logo">
+  <div class="container pt-5">
+    <div class="row">
+      <div class="col-md-1 col-sm-2">
+      </div>
+
+      <div class="col-md-2 col-sm-12">
+        <div class="footers-logo">
+          <%= image_tag 'logo.png', class: 'img-responsive', style: 'width:100px;' %>
+        </div>
+
+      </div>
+      <div class="col-md-2 col-sm-12">
+        <ul class="list-unstyled">
+          <li><%= link_to 'A EMPRESA', a_empresa_path %></li>
+          <li><%= link_to 'COMO FUNCIONA', como_funciona_path %></li>
+          <li><%= link_to 'CALCULADORA SOLAR', new_calculadora_path %></li>
+        </ul>
+      </div>
+      <div class="col-md-2 col-sm-12">
+        <ul class="list-unstyled">
+          <li><%= link_to 'ORÇAMENTO', orcamento_path %></li>
+          <li><%= link_to 'CONTATO', new_contact_path %></li>
+
+        </ul>
+      </div>
+      <div class="col-md-3 col-sm-12">
+        <ul class="list-unstyled">
+          <li><%= link_to 'CONTATO: +55 65 99914.7877', remote: true %></li>
+          <li><%= image_tag '/icons/facebook.png',  style: 'width: 8%;' %><%= link_to '/NORTESULENERGIASOLAR', '#' %></li>
+          <li><%= image_tag '/icons/instagram.png', style: 'width: 8%;' %><%= link_to '/NORTESULENERGIASOLAR', '#' %></li>
+        </ul>
+      </div>
+
+      <div class="col-md-2 col-sm-2">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="footer">
+  <div class="container">
+    <div class="row ">
+      <div class="col-md-12">
+        <p>
+          NORTE SUL ENERGIA SOLAR LTDA. - RUA GENERAL MASCARENHAS DE MORAIS, RONDONÓPOLIS/MT - CEP 78705-529
+        </p>
+        <p>TODOS OS DIREITOS RESERVADOS A NORTE E SUL ENERGIA SOLAR ®<%= Time.now.year %></p>
+      </div>
+    </div>
+  </div>
+</section>

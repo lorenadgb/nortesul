@@ -1,0 +1,86 @@
+<header class="como-funciona">
+  <div class="container">
+
+    <%= render partial:'layouts/shared/links', locals: { carouselClass: '' } %>
+
+    <br>
+
+    <br><br><br>
+
+  </div>
+</header>
+
+<section class="services">
+  <div class="container">
+    <div class="box first">
+      <div class="row">
+
+        <div id="como-funciona" class="row">
+          <div class="col-md-12">
+            <div class="rdg-expertise-description rdg-strategy-bg rdg-animated-delay-0" style="float: left;">
+            </div>
+            <div class="nav-left-text">
+              <p style="margin-bottom: -2rem; color: #2d5c82">CONHEÇA TODOS OS</p>
+              <p style="color: #2d5c82; margin:-30px">BENEFÍCIOS DA ENERGIA SOLAR</p>
+            </div>
+          </div>
+        </div>
+
+        <br>
+        <br>
+
+        <div class="row">
+          <div class="col-md-12">
+            <p class="paragraph-inside">
+              A energia solar fotovoltaica é produzida por módulos que são instalados nos locais escolhidos das residências, empresas ou campo.
+              Esses módulos ou painéis absorvem a luz proveniente do sol e a transformam em energia elétrica que é diretamente usada nas funcionalidades elétricas.
+            </p>
+
+            <br>
+
+            <div class="row text-center">
+              <div class="col-12 icons-cf-wrapper">
+                <%= image_tag '/icons/como-funciona.png' %>
+              </div>
+            </div>
+
+            <br>
+
+            <p class="paragraph-inside">
+              Além dos benefícios acima, é importante ressaltar de que a Energia Solar Fotovoltáica tem capacidade de renovação;
+              Reduz a emissão de gases que causam o efeito estufa; tem baixo impacto ambiental; não faz barulho; pode ser
+              utilizado em qualquer lugar, inclusive em áreas remotas.
+            </p>
+
+            <div class="sub-header">
+              <div class="nav-left-text">
+                <p class="secondary-header">COMO TRABALHAMOS</p>
+              </div>
+            </div>
+
+            <span class="content-text" style="font-size: 18px">A Norte Sul executa todo o trabalho, desde o projeto, instalação e manutenção.</span>
+            <br>
+            <span class="content-text" style="font-size: 18px">Confira abaixo algumas etapas do nosso trabalho:</span>
+
+            <br>
+
+            <div class="col-md-12">
+              <%= render 'cronologia' %>
+            </div>
+
+            <br><br><br><br>
+
+            <div class="col-md-6">
+              <%= link_to 'CALCULADORA SOLAR', new_calculadora_path, class: 'btn btn-primary btn-block pull-right' %>
+            </div>
+
+            <div class="col-md-6">
+              <%= link_to 'SOLICITE ORÇAMENTO', orcamento_path, class: 'btn btn-primary-outline btn-block pull-left' %>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

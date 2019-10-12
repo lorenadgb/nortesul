@@ -1,0 +1,225 @@
+<header class="orcamento">
+  <div class="container">
+
+    <%= render partial:'layouts/shared/links', locals: { carouselClass: '' } %>
+
+    <br>
+
+    <br><br><br>
+
+  </div>
+</header>
+
+<section class="services">
+  <div class="container">
+    <div class="box first">
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="nav-left-text correct-paragraph">
+          <div class="rdg-expertise-description rdg-strategy-bg rdg-animated-delay-0-contact" style="float: left;"></div>
+            <p>O MELHOR INVESTIMENTO</p>
+            <p>SOLICITE UM ORÇAMENTO</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+
+          <p class="paragraph-inside">
+            Para receber um orçamento sem compromisso da NORTE SUL basta preencher os campos do formulário
+            abaixo. A nossa equipe entrará em contato o mais breve possível.
+          </p>
+
+          <br>
+
+          <%= simple_form_for @calculadora, url: url_for(action: 'orcamento', controller: 'calculadora'), method: 'post' do |f| %>
+            <%= f.hidden_field :media %>
+            <%= hidden_field_tag :previous_local_value, @calculadora.local %>
+            <%= hidden_field_tag :previous_media_value, @calculadora.media %>
+
+
+            <div class="form-group">
+              <div class="col-md-12">
+                <%= f.input :nome, placeholder: 'NOME', required: true, label: false, input_html: { class: 'form-control'} %>
+              </diV>
+
+              <div class="col-md-12">
+                <%= f.input :email, placeholder: 'E-MAIL', required: true, label: false, input_html: { class: 'form-control'} %>
+              </diV>
+
+              <div class="col-md-12">
+                <%= f.input :telefone, placeholder: 'TELEFONE', required: true, label: false, input_html: { class: 'form-control', style: 'margin-bottom: 40px'} %>
+              </div>
+            </div>
+
+            <div class="row">
+              <p style="font-size: 26px; text-align: center;">
+                LOCAL DA INSTALAÇÃO
+              </p>
+            </div>
+
+            <div class="col-md-6">
+              <%= f.input :estado, prompt: 'ESTADO', collection: State.all, label: false, input_html: { class: 'form-control'}, sytle: 'padding-right: 1px' %>
+            </div>
+
+            <div class="col-md-6">
+              <%= f.input :cidade, prompt: 'CIDADE', collection: City.all, label: false, input_html: { class: 'form-control'} %>
+            </div>
+
+            <div class="row">
+              <p style="font-size: 26px; text-align: center; margin-top: 110px">ONDE SERÁ INSTALADO?</p>
+            </div>
+
+            <div class="instalacao-wrapper">
+              <%= f.collection_radio_buttons(:local, [['residencial', '/icons/residencial_azul'], ['comercial', '/icons/comercial_azul'], ['outro', '/icons/outro_azul']], :first, :last, item_wrapper_tag: "div class='col-md-3 col-md-offset-1'", class: 'threads-opts') do |b| %>
+                <%= b.label { b.radio_button(class: 'threads-opts') + image_tag(b.text+'.png', style: 'width: 70%') + local_dictionary(b.text) } %>
+              <% end %>
+            </div>
+
+            <div class="row">
+                <p style="font-size: 26px; text-align: center; margin-top: 40px">CONSUMO MÉDIO MENSAL (KWH)</p>
+              </div>
+
+            <div class="valor-slider">
+              <div class="slider-wrapper">
+                <div class="slider-items dollar-sign">
+                  <%= image_tag 'menor.png', style: 'height: 20px;', class: 'pull-right' %>
+                </div>
+                <div class="slider-items inside-slider">
+                  <div id="slider"></div>
+                </div>
+                <div class="slider-items dollar-sign">
+                  <%= image_tag 'maior.png', style: 'height: 40px' %>
+                </div>
+              </div>
+            </div>
+
+              <center class="submit-content"> <%= f.button :submit, 'ENVIAR', :class=> "btn btn-primary", style: 'width: 250px' %> </center>
+
+          <% end %>
+
+        </div><!--/.box-->
+      </div>
+    </div>
+  </div><!--/.container-->
+</section>
+
+<script>
+    $(document).ready(function(){
+        let startAmount = 7500;
+
+        initPreferences = function () {
+            $('#calculadora_telefone').phoneBrazil();
+
+            if ($('#previous_media_value').val() !== ''){
+                startAmount = parseInt($('#previous_media_value').val());
+            }
+
+            if ($('#previous_local_value').val() != undefined){
+                clickLocal($('#calculadora_local_' + $('#previous_local_value').val()).val());
+            }
+
+            //Added, set initial value.
+            $("#amount").val(startAmount);
+            $("#duration").val(startAmount);
+            $("#amount-label").text(startAmount);
+            $("#duration-label").text(startAmount);
+            $('#calculadora_media').val(startAmount);
+
+            update();
+        }();
+
+        $("input[name='calculadora[local]']").click(function(){
+            clickLocal($(this).val());
+        });
+
+        function clickLocal(type) {
+            switch(type) {
+                case 'residencial':
+                    $('#calculadora_local_residencial').next('img').attr("src", "/icons/residencial_amarelo.png");
+                    $('#calculadora_local_comercial').next('img').attr("src", "/icons/comercial_azul.png");
+                    $('#calculadora_local_outro').next('img').attr("src", "/icons/outro_azul.png");
+
+                    break;
+
+                case 'comercial':
+                    $('#calculadora_local_residencial').next('img').attr("src", "/icons/residencial_azul.png");
+                    $('#calculadora_local_comercial').next('img').attr("src", "/icons/comercial_amarelo.png");
+                    $('#calculadora_local_outro').next('img').attr("src", "/icons/outro_azul.png");
+
+                    break;
+
+                case 'outro':
+                    $('#calculadora_local_residencial').next('img').attr("src", "/icons/residencial_azul.png");
+                    $('#calculadora_local_comercial').next('img').attr("src", "/icons/comercial_azul.png");
+                    $('#calculadora_local_outro').next('img').attr("src", "/icons/outro_amarelo.png");
+
+                    break;
+            }
+        }
+
+        $("#calculadora_estado").change(function() {
+            getCitiesByState("id="+$("#calculadora_estado").val());
+        });
+
+        $("#calculadora_cidade").change(function() {
+            getStateByCity("id="+$("#calculadora_cidade").val());
+        });
+
+        function getCitiesByState(id) {
+            $.getJSON("/cities_by_state", id, function (j) {
+                var options = '<option value="">CIDADE</option>';
+                $.each(j.cty, function (i, item) {
+                    options += '<option value="' + item.id + '">' + item.n + '</option>';
+                });
+                $("#calculadora_cidade").html(options);
+            });
+        }
+
+        function getStateByCity(id) {
+            $.getJSON("/state_by_city", id, function (j) {
+                $("#calculadora_estado").val(j['state']['id']);
+            });
+        }
+
+        $("#slider").slider({
+            animate: true,
+            value:startAmount,
+            min: 100,
+            max: 15000,
+            step: 10,
+            slide: function(event, ui) {
+                update(1,ui.value);
+            }
+        });
+        $('#slider a').html('<label><span class="glyphicon glyphicon-chevron-left"></span> '+ startAmount +' <span class="glyphicon glyphicon-chevron-right"></span></label>');
+
+
+        //changed. now with parameter
+        function update(slider,val) {
+            //changed. Now, directly take value from ui.value. if not set (initial, will use current value.)
+            var $amount = slider == 1?val:$("#amount").val();
+            var $duration = slider == 2?val:$("#duration").val();
+
+            /* commented
+            $amount = $( "#slider" ).slider( "value" );
+             */
+
+            $total = "$" + ($amount * $duration);
+            $( "#amount" ).val($amount);
+            $( "#amount-label" ).text($amount);
+            $( "#duration" ).val($duration);
+            $( "#duration-label" ).text($duration);
+            $( "#total" ).val($total);
+            $( "#total-label" ).text($total);
+
+            $('#slider a').html('<label><span class="glyphicon glyphicon-chevron-left"></span> '+$amount+' <span class="glyphicon glyphicon-chevron-right"></span></label>');
+
+            if ($amount != undefined) {
+              $('#calculadora_media').val($amount);
+            }
+        }
+    });
+</script>
