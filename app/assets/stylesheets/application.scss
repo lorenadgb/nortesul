@@ -973,13 +973,13 @@ label[for^="calculadora"], label[for^="contact"] {
   text-transform: uppercase;
   font-weight: bold;
 }
-//
-//label[for^="calculadora_local"], label[for^="contact_local"] {
-//  img {
-//    height: 120px;
-//    width: 120px;
-//  }
-//}
+
+label[for^="calculadora_local"], label[for^="contact_local"] {
+  img {
+    height: 120px;
+    width: 120px;
+  }
+}
 
 .rede-eletrica img {
   height: 50px;
