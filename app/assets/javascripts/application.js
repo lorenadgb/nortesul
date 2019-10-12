@@ -16,4 +16,5 @@
 //= require jquery_ujs
 //= require rails-ujs
 //= require turbolinks
+//= require jquery.phone.brazil
 //= require_tree .
